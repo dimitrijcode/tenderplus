@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Route;
 /*
  * Public Website routes
  */
-Route::get('/', WelcomeController::class)->name('welcome');
+Route::get('/', [WelcomeController::class, 'index'])->name('home');
 
 // Todo: add your public routes here
 
@@ -16,7 +16,6 @@ Route::get('/', WelcomeController::class)->name('welcome');
  * Authentication routes
  */
 require __DIR__.'/auth.php';
-
 
 /*
  * Userzone routes
