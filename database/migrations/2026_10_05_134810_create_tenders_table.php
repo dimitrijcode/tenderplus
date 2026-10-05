@@ -18,6 +18,11 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->string('organization_name')->nullable();
             $table->string('location')->nullable();
+            $table->decimal('budget', 10, 2)->nullable();
+            $table->dateTime('deadline')->nullable();
+            $table->string('source_url')->nullable();
+            $table->boolean('is_public')->default(true);
+            $table->string('status')->default('open');
 
             $table->timestamps();
         });
