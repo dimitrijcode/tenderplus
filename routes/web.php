@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\TenderController;
 use App\Http\Controllers\Userzone\DashboardController;
 use App\Http\Controllers\Userzone\ProfileController;
 use App\Http\Controllers\WelcomeController;
@@ -9,6 +10,8 @@ use Illuminate\Support\Facades\Route;
  * Public Website routes
  */
 Route::get('/', [WelcomeController::class, 'index'])->name('home');
+
+Route::get('tenders', [TenderController::class, 'index'])->name('tenders.index');
 
 // Todo: add your public routes here
 
