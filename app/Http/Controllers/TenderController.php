@@ -14,4 +14,9 @@ class TenderController extends Controller
 
         return view('tenders.index', compact('tenders'));
     }
+
+    public function show(Tender $tender)
+    {
+        return view('tenders.show', compact('tender'));
+    }
 }

@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [WelcomeController::class, 'index'])->name('home');
 
 Route::get('tenders', [TenderController::class, 'index'])->name('tenders.index');
+Route::get('tenders/{tender}', [TenderController::class, 'show'])->name('tenders.show');
 
 // Todo: add your public routes here
 
