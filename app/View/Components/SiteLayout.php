@@ -8,12 +8,18 @@ use Illuminate\View\Component;
 
 class SiteLayout extends Component
 {
+    public array $menu;
+
     /**
      * Create a new component instance.
      */
     public function __construct()
     {
-        //
+        $this->menu = [
+            ['label' => 'home', 'link' => route('home')],
+            ['label' => 'tenders', 'link' => route('tenders.index')],
+            ['label' => 'about', 'link' => '/about'],
+        ];
     }
 
     /**
