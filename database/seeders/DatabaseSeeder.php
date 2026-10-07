@@ -17,9 +17,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        Tender::factory(10)->create();
+        $tenders = Tender::factory(10)->create();
 
         Keyword::factory(5)->create();
+
+        foreach ($tenders as $tender) {
+            $tender->keywords()->attach(Keyword::inRandomOrder()->take(rand(0, 3))->pluck('id'));
+        }
 
         // User::factory(10)->create();
 

@@ -5,6 +5,7 @@ namespace App\Models;
 use Database\Factories\KeywordFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Keyword extends Model
 {
@@ -20,4 +21,9 @@ class Keyword extends Model
         'name',
         'description',
     ];
+
+    public function tenders(): BelongsToMany
+    {
+        return $this->belongsToMany(Tender::class);
+    }
 }
