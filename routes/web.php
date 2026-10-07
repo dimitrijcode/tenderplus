@@ -17,6 +17,12 @@ Route::get('tenders/{tender}', [TenderController::class, 'show'])->name('tenders
 // Todo: add your public routes here
 
 /*
+ * Management routes
+ */
+// CRUD for tenders
+Route::get('admin/tenders', [App\Http\Controllers\Admin\TenderController::class, 'index'])->name('admin.tenders.index');
+
+/*
  * Authentication routes
  */
 require __DIR__.'/auth.php';
