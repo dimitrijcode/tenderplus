@@ -13,7 +13,7 @@
             <form action="{{ route('admin.tenders.destroy', $tender->id) }}" method="POST">
                 @method('DELETE')
                 @csrf
-                <button type="submit">delete</button>
+                <button type="submit" onclick="return confirm('Are you sure you want to delete this tender?')">delete</button>
             </form>
         </div>
     @endforeach
