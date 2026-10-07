@@ -10,7 +10,11 @@
         <div>
             {{ $tender->title }}
             <a href="{{ route('admin.tenders.edit', $tender->id) }}">edit</a>
-            <a href="">delete</a>
+            <form action="{{ route('admin.tenders.destroy', $tender->id) }}" method="POST">
+                @method('DELETE')
+                @csrf
+                <button type="submit">delete</button>
+            </form>
         </div>
     @endforeach
 

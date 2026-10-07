@@ -25,6 +25,7 @@ Route::get('admin/tenders/create', [App\Http\Controllers\Admin\TenderController:
 Route::post('admin/tenders', [App\Http\Controllers\Admin\TenderController::class, 'store'])->name('admin.tenders.store');
 Route::get('admin/tenders/{tender}/edit', [App\Http\Controllers\Admin\TenderController::class, 'edit'])->name('admin.tenders.edit');
 Route::put('admin/tenders/{tender}', [App\Http\Controllers\Admin\TenderController::class, 'update'])->name('admin.tenders.update');
+Route::delete('admin/tenders/{tender}', [App\Http\Controllers\Admin\TenderController::class, 'destroy'])->name('admin.tenders.destroy');
 
 /*
  * Authentication routes

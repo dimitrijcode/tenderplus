@@ -55,4 +55,11 @@ class TenderController extends Controller
 
         return redirect()->route('admin.tenders.index');
     }
+
+    public function destroy(Tender $tender)
+    {
+        $tender->delete();
+
+        return redirect()->route('admin.tenders.index');
+    }
 }
