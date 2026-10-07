@@ -26,4 +26,9 @@ class Keyword extends Model
     {
         return $this->belongsToMany(Tender::class);
     }
+
+    public function users(): BelongsToMany
+    {
+        return $this->belongsToMany(User::class);
+    }
 }

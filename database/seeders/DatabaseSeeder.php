@@ -31,5 +31,9 @@ class DatabaseSeeder extends Seeder
             'name' => 'Test User',
             'email' => 'test@example.com',
         ]);
+
+        foreach (User::inRandomOrder()->take(5)->get() as $user) {
+            $user->keywords()->attach(Keyword::inRandomOrder()->take(rand(0, 3))->pluck('id'));
+        }
     }
 }
