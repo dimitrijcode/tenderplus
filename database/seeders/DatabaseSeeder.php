@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Keyword;
 use App\Models\Tender;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -17,6 +18,8 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         Tender::factory(10)->create();
+
+        Keyword::factory(5)->create();
 
         // User::factory(10)->create();
 
