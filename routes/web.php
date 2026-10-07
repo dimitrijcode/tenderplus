@@ -22,6 +22,7 @@ Route::get('tenders/{tender}', [TenderController::class, 'show'])->name('tenders
 // CRUD for tenders
 Route::get('admin/tenders', [App\Http\Controllers\Admin\TenderController::class, 'index'])->name('admin.tenders.index');
 Route::get('admin/tenders/create', [App\Http\Controllers\Admin\TenderController::class, 'create'])->name('admin.tenders.create');
+Route::post('admin/tenders', [App\Http\Controllers\Admin\TenderController::class, 'store'])->name('admin.tenders.store');
 
 /*
  * Authentication routes

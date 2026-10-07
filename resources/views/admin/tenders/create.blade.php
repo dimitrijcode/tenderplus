@@ -1,7 +1,7 @@
 <x-site-layout>
 
     <h1>Create new tender</h1>
-    <form action="#" method="POST">
+    <form action="{{ route('admin.tenders.store') }}" method="POST">
 
         @csrf
 
