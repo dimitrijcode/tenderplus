@@ -13,4 +13,10 @@ class TenderController extends Controller
 
         return view('admin.tenders.index', compact('tenders'));
     }
+
+    //
+    public function create()
+    {
+        return view('admin.tenders.create');
+    }
 }
