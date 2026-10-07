@@ -1,7 +1,10 @@
 <x-site-layout>
 
     <h1>{{ $tender->title }}</h1>
+    <hr/>
     <p><i>{{ $tender->organization_name }} ({{ $tender->location }}) · entered by {{ $tender->user?->name ?? '—' }}</i></p>
+    <p><i>Keywords:</i> @foreach($tender->keywords as $keyword){{ $keyword->name }}, @endforeach</p>
+    <hr/>
     <p>{{ $tender->description }}</p>
     <p>Budget: €{{ number_format($tender->budget, 2) }}</p>
     <p>Deadline: {{ $tender->deadline }}</p>
