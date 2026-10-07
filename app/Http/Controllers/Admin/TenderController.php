@@ -35,4 +35,24 @@ class TenderController extends Controller
 
         return redirect()->route('admin.tenders.index');
     }
+
+    public function edit(Tender $tender)
+    {
+        // $tender contains the referenced tender
+
+        return view('admin.tenders.edit', compact('tender'));
+    }
+
+    public function update(Request $request, Tender $tender)
+    {
+        // Validate the request (form data)
+
+        $tender->update([
+            'title' => $request['title'],
+            'description' => $request['description'],
+            'organization_name' => $request['organization_name'],
+        ]);
+
+        return redirect()->route('admin.tenders.index');
+    }
 }

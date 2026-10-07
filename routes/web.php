@@ -23,6 +23,8 @@ Route::get('tenders/{tender}', [TenderController::class, 'show'])->name('tenders
 Route::get('admin/tenders', [App\Http\Controllers\Admin\TenderController::class, 'index'])->name('admin.tenders.index');
 Route::get('admin/tenders/create', [App\Http\Controllers\Admin\TenderController::class, 'create'])->name('admin.tenders.create');
 Route::post('admin/tenders', [App\Http\Controllers\Admin\TenderController::class, 'store'])->name('admin.tenders.store');
+Route::get('admin/tenders/{tender}/edit', [App\Http\Controllers\Admin\TenderController::class, 'edit'])->name('admin.tenders.edit');
+Route::put('admin/tenders/{tender}', [App\Http\Controllers\Admin\TenderController::class, 'update'])->name('admin.tenders.update');
 
 /*
  * Authentication routes

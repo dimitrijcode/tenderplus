@@ -8,7 +8,9 @@
 
     @foreach($tenders as $tender)
         <div>
-            {{ $tender->title }} <a href="">edit</a> <a href="">delete</a>
+            {{ $tender->title }}
+            <a href="{{ route('admin.tenders.edit', $tender->id) }}">edit</a>
+            <a href="">delete</a>
         </div>
     @endforeach
 
