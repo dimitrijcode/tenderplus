@@ -20,6 +20,13 @@
                     <a href="{{$item['link']}}" style="padding-right: 8px;"> {{$item['label']}} </a>
                 @endforeach
             </div>
+            <div>
+                @auth
+                    <a href="{{ route('dashboard') }}">Dashboard</a>
+                @else
+                    <a href="{{ route('login') }}">Login</a>
+                @endauth
+            </div>
         </div>
     </div>
 
