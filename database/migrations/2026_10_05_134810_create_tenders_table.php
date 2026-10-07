@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('source_url')->nullable();
             $table->boolean('is_public')->default(true);
             $table->string('status')->default('open');
+            $table->foreignId('user_id')->nullable()->constrained()->nullOnDelete();
 
             $table->timestamps();
         });

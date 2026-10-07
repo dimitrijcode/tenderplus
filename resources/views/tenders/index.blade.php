@@ -8,7 +8,7 @@
                 <a href="{{ route('tenders.show', $tender) }}">
                     <b>{{ $tender->title }}</b>
                 </a>
-                by {{ $tender->organization_name }} ({{ $tender->location }})
+                by {{ $tender->organization_name }} ({{ $tender->location }}) · entered by {{ $tender->user?->name ?? '—' }}
             </li>
         @endforeach
     </ul>

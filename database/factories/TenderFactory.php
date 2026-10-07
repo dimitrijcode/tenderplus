@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Tender;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -27,6 +28,7 @@ class TenderFactory extends Factory
             'source_url' => $this->faker->url(),
             'is_public' => true,
             'status' => 'open',
+            'user_id' => User::factory(),
         ];
     }
 }
