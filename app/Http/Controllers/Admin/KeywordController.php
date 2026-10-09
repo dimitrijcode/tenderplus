@@ -48,4 +48,22 @@ class KeywordController extends Controller implements HasMiddleware
 
         return redirect()->route('admin.keywords.index');
     }
+
+    public function edit(Keyword $keyword)
+    {
+        return view('admin.keywords.edit', compact('keyword'));
+    }
+
+    public function update(Request $request, Keyword $keyword)
+    {
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+        ]);
+
+        $keyword->update([
+            'name' => $request['name'],
+        ]);
+
+        return redirect()->route('admin.keywords.index');
+    }
 }
