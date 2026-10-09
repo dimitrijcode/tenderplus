@@ -31,6 +31,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('admin/tenders/{tender}/edit', [App\Http\Controllers\Admin\TenderController::class, 'edit'])->name('admin.tenders.edit');
     Route::put('admin/tenders/{tender}', [App\Http\Controllers\Admin\TenderController::class, 'update'])->name('admin.tenders.update');
     Route::delete('admin/tenders/{tender}', [App\Http\Controllers\Admin\TenderController::class, 'destroy'])->name('admin.tenders.destroy');
+
+    // CRUD for keywords
+    Route::get('admin/keywords', [App\Http\Controllers\Admin\KeywordController::class, 'index'])->name('admin.keywords.index');
 });
 
 /*
