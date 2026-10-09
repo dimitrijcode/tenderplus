@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Keyword;
 use App\Models\Tender;
 use Illuminate\Http\Request;
 
@@ -22,7 +23,9 @@ class TenderController extends Controller
     //
     public function create()
     {
-        return view('admin.tenders.create');
+        $keyword_options = Keyword::orderBy('name')->pluck('name', 'id')->toArray();
+
+        return view('admin.tenders.create', compact('keyword_options'));
     }
 
     public function store(Request $request)
@@ -55,7 +58,9 @@ class TenderController extends Controller
     {
         abort_unless($tender->canChange(auth()->user()), 403);
 
-        return view('admin.tenders.edit', compact('tender'));
+        $keyword_options = Keyword::orderBy('name')->pluck('name', 'id')->toArray();
+
+        return view('admin.tenders.edit', compact('tender', 'keyword_options'));
     }
 
     public function update(Request $request, Tender $tender)
