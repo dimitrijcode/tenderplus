@@ -19,6 +19,39 @@
             @error('organization_name') <div style="color: red;">{{ $message }} </div> @enderror
         </div>
 
+        <div>
+            <label for="location">Location</label><br>
+            <input type="text" name="location" placeholder="Location">
+        </div>
+
+        <div>
+            <label for="budget">Budget (€)</label><br>
+            <input type="number" step="0.01" name="budget" placeholder="Budget">
+        </div>
+
+        <div>
+            <label for="deadline">Deadline</label><br>
+            <input type="datetime-local" name="deadline">
+        </div>
+
+        <div>
+            <label for="source_url">Source URL</label><br>
+            <input type="url" name="source_url" placeholder="https://">
+        </div>
+
+        <div>
+            <label for="is_public">Public</label>
+            <input type="checkbox" name="is_public" value="1" checked>
+        </div>
+
+        <div>
+            <label for="status">Status</label><br>
+            <select name="status">
+                <option value="open">Open</option>
+                <option value="closed">Closed</option>
+            </select>
+        </div>
+
         <button type="submit">Create tender</button>
     </form>
 
