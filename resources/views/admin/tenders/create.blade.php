@@ -5,11 +5,7 @@
 
         @csrf
 
-        <div>
-            <label for="title">Title</label><br>
-            <input type="text" name="title" placeholder="Title">
-            @error('title') <div style="color: red;">{{ $message }} </div> @enderror
-        </div>
+        <x-form-text-input name="title" label="Title" placeholder="Title" />
 
         <div>
             <label for="description">Description</label><br>
