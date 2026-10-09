@@ -30,6 +30,12 @@ class TenderController extends Controller
             'title' => $request['title'],
             'description' => $request['description'],
             'organization_name' => $request['organization_name'],
+            'location' => $request['location'],
+            'budget' => $request['budget'] ?: null,
+            'deadline' => $request['deadline'] ?: null,
+            'source_url' => $request['source_url'] ?: null,
+            'is_public' => $request->boolean('is_public'),
+            'status' => $request['status'] ?? 'open',
             'user_id' => auth()->id(),
         ]);
 

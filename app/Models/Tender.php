@@ -22,6 +22,12 @@ class Tender extends Model
         'title',
         'description',
         'organization_name',
+        'location',
+        'budget',
+        'deadline',
+        'source_url',
+        'is_public',
+        'status',
         'user_id',
     ];
 
