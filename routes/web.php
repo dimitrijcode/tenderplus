@@ -34,6 +34,8 @@ Route::middleware(['auth'])->group(function () {
 
     // CRUD for keywords
     Route::get('admin/keywords', [App\Http\Controllers\Admin\KeywordController::class, 'index'])->name('admin.keywords.index');
+    Route::get('admin/keywords/create', [App\Http\Controllers\Admin\KeywordController::class, 'create'])->name('admin.keywords.create');
+    Route::post('admin/keywords', [App\Http\Controllers\Admin\KeywordController::class, 'store'])->name('admin.keywords.store');
 });
 
 /*

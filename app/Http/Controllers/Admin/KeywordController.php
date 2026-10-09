@@ -30,4 +30,22 @@ class KeywordController extends Controller implements HasMiddleware
 
         return view('admin.keywords.index', compact('keywords'));
     }
+
+    public function create()
+    {
+        return view('admin.keywords.create');
+    }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+        ]);
+
+        Keyword::create([
+            'name' => $request['name'],
+        ]);
+
+        return redirect()->route('admin.keywords.index');
+    }
 }
