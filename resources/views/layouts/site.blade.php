@@ -23,6 +23,7 @@
             <div>
                 @auth
                     <a href="{{ route('dashboard') }}">Dashboard</a>
+                    <a href="{{ route('admin.tenders.index') }}">Tender management</a>
                 @else
                     <a href="{{ route('login') }}">Login</a>
                 @endauth
