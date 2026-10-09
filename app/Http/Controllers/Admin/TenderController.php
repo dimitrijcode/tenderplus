@@ -40,7 +40,11 @@ class TenderController extends Controller
             'organization_name' => ['required', 'string', 'max:255'],
             'keywords' => ['nullable', 'array'],
             'keywords.*' => ['integer', 'exists:keywords,id'],
+            'user_id' => ['nullable', 'integer', 'exists:users,id'],
         ]);
+
+        // Only admins may pick the owner, everyone else owns what they create
+        $isAdmin = auth()->user()->role === 'admin';
 
         // Create a new tender
         $tender = Tender::create([
@@ -53,7 +57,7 @@ class TenderController extends Controller
             'source_url' => $request['source_url'] ?: null,
             'is_public' => $request->boolean('is_public'),
             'status' => $request['status'] ?? 'open',
-            'user_id' => auth()->id(),
+            'user_id' => $isAdmin && $request->filled('user_id') ? $request['user_id'] : auth()->id(),
         ]);
 
         $tender->keywords()->sync($request->input('keywords', []));
@@ -83,6 +87,7 @@ class TenderController extends Controller
             'organization_name' => ['required', 'string', 'max:255'],
             'keywords' => ['nullable', 'array'],
             'keywords.*' => ['integer', 'exists:keywords,id'],
+            'user_id' => ['nullable', 'integer', 'exists:users,id'],
         ]);
 
         $tender->update([
@@ -96,6 +101,11 @@ class TenderController extends Controller
             'is_public' => $request->boolean('is_public'),
             'status' => $request['status'] ?? 'open',
         ]);
+
+        // Only admins may reassign the owner
+        if (auth()->user()->role === 'admin' && $request->filled('user_id')) {
+            $tender->update(['user_id' => $request['user_id']]);
+        }
 
         $tender->keywords()->sync($request->input('keywords', []));
 
