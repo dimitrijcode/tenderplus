@@ -35,10 +35,12 @@ class TenderController extends Controller
             'title' => ['required', 'string', 'max:255'],
             'description' => ['required', 'string'],
             'organization_name' => ['required', 'string', 'max:255'],
+            'keywords' => ['nullable', 'array'],
+            'keywords.*' => ['integer', 'exists:keywords,id'],
         ]);
 
         // Create a new tender
-        Tender::create([
+        $tender = Tender::create([
             'title' => $request['title'],
             'description' => $request['description'],
             'organization_name' => $request['organization_name'],
@@ -50,6 +52,8 @@ class TenderController extends Controller
             'status' => $request['status'] ?? 'open',
             'user_id' => auth()->id(),
         ]);
+
+        $tender->keywords()->sync($request->input('keywords', []));
 
         return redirect()->route('admin.tenders.index');
     }
