@@ -38,6 +38,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('admin/keywords', [App\Http\Controllers\Admin\KeywordController::class, 'store'])->name('admin.keywords.store');
     Route::get('admin/keywords/{keyword}/edit', [App\Http\Controllers\Admin\KeywordController::class, 'edit'])->name('admin.keywords.edit');
     Route::put('admin/keywords/{keyword}', [App\Http\Controllers\Admin\KeywordController::class, 'update'])->name('admin.keywords.update');
+    Route::delete('admin/keywords/{keyword}', [App\Http\Controllers\Admin\KeywordController::class, 'destroy'])->name('admin.keywords.destroy');
 });
 
 /*

@@ -66,4 +66,11 @@ class KeywordController extends Controller implements HasMiddleware
 
         return redirect()->route('admin.keywords.index');
     }
+
+    public function destroy(Keyword $keyword)
+    {
+        $keyword->delete();
+
+        return redirect()->route('admin.keywords.index');
+    }
 }
