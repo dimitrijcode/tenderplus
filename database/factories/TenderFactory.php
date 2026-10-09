@@ -20,7 +20,7 @@ class TenderFactory extends Factory
     {
         return [
             'title' => $this->faker->sentence(),
-            'description' => $this->faker->paragraph(),
+            'description' => $this->faker->paragraphs(7, true),
             'organization_name' => $this->faker->company(),
             'location' => $this->faker->city(),
             'budget' => $this->faker->randomFloat(2, 1000, 500000),
