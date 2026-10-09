@@ -7,11 +7,7 @@
 
         <x-form-text-input name="title" label="Title" placeholder="Title" />
 
-        <div>
-            <label for="description">Description</label><br>
-            <textarea name="description" placeholder="Tender description"></textarea>
-            @error('description') <div style="color: red;">{{ $message }} </div> @enderror
-        </div>
+        <x-form-textarea name="description" label="Description" placeholder="Tender description" />
 
         <div>
             <label for="organization_name">Organization</label><br>
