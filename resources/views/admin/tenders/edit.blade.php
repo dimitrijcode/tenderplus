@@ -42,6 +42,8 @@
             </select>
         </div>
 
+        <x-form-checkboxes name="keywords" label="Keywords" :values="$tender->keywords->pluck('id')->toArray()" :options="$keyword_options" />
+
         <button type="submit">Save changes</button>
     </form>
 

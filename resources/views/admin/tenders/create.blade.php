@@ -45,6 +45,8 @@
             </select>
         </div>
 
+        <x-form-checkboxes name="keywords" label="Keywords" :options="$keyword_options" />
+
         <button type="submit">Create tender</button>
     </form>
 
