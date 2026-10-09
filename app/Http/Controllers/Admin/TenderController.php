@@ -24,6 +24,11 @@ class TenderController extends Controller
     public function store(Request $request)
     {
         // Validate the request (form data)
+        $request->validate([
+            'title' => ['required', 'string', 'max:255'],
+            'description' => ['required', 'string'],
+            'organization_name' => ['required', 'string', 'max:255'],
+        ]);
 
         // Create a new tender
         Tender::create([
@@ -46,6 +51,11 @@ class TenderController extends Controller
     public function update(Request $request, Tender $tender)
     {
         // Validate the request (form data)
+        $request->validate([
+            'title' => ['required', 'string', 'max:255'],
+            'description' => ['required', 'string'],
+            'organization_name' => ['required', 'string', 'max:255'],
+        ]);
 
         $tender->update([
             'title' => $request['title'],
