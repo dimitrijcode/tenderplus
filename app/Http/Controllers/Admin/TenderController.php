@@ -53,13 +53,15 @@ class TenderController extends Controller
 
     public function edit(Tender $tender)
     {
-        // $tender contains the referenced tender
+        abort_unless($tender->canChange(auth()->user()), 403);
 
         return view('admin.tenders.edit', compact('tender'));
     }
 
     public function update(Request $request, Tender $tender)
     {
+        abort_unless($tender->canChange(auth()->user()), 403);
+
         // Validate the request (form data)
         $request->validate([
             'title' => ['required', 'string', 'max:255'],
@@ -84,6 +86,8 @@ class TenderController extends Controller
 
     public function destroy(Tender $tender)
     {
+        abort_unless($tender->canChange(auth()->user()), 403);
+
         $tender->delete();
 
         return redirect()->route('admin.tenders.index');

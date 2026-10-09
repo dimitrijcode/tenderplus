@@ -40,4 +40,13 @@ class Tender extends Model
     {
         return $this->belongsToMany(Keyword::class);
     }
+
+    public function canChange(User $user): bool
+    {
+        if ($user->id === $this->user_id) {
+            return true;
+        }
+
+        return $user->role === 'admin';
+    }
 }
