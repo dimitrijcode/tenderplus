@@ -32,6 +32,12 @@ class DatabaseSeeder extends Seeder
             'email' => 'test@example.com',
         ]);
 
+        User::factory()->create([
+            'name' => 'Admin User',
+            'email' => 'admin@example.com',
+            'role' => 'admin',
+        ]);
+
         foreach (User::inRandomOrder()->take(5)->get() as $user) {
             $user->keywords()->attach(Keyword::inRandomOrder()->take(rand(0, 3))->pluck('id'));
         }

@@ -10,7 +10,11 @@ class TenderController extends Controller
 {
     public function index()
     {
-        $tenders = Tender::all();
+        if (auth()->user()->role === 'admin') {
+            $tenders = Tender::all();
+        } else {
+            $tenders = Tender::where('user_id', auth()->user()->id)->get();
+        }
 
         return view('admin.tenders.index', compact('tenders'));
     }
