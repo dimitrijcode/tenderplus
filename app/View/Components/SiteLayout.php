@@ -16,9 +16,9 @@ class SiteLayout extends Component
     public function __construct()
     {
         $this->menu = [
-            ['label' => 'home', 'link' => route('home')],
-            ['label' => 'tenders', 'link' => route('tenders.index')],
-            ['label' => 'about', 'link' => '/about'],
+            ['label' => 'Home', 'link' => route('home')],
+            ['label' => 'Tenders', 'link' => route('tenders.index')],
+            ['label' => 'About', 'link' => '/about'],
         ];
     }
 
