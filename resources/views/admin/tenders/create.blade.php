@@ -45,6 +45,10 @@
             </select>
         </div>
 
+        @if (auth()->user()->role === 'admin')
+            <x-form-select name="user_id" label="Owner" :options="$owner_options" :value="auth()->id()" />
+        @endif
+
         <x-form-checkboxes name="keywords" label="Keywords" :options="$keyword_options" />
 
         <button type="submit">Create tender</button>

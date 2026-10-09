@@ -42,6 +42,10 @@
             </select>
         </div>
 
+        @if (auth()->user()->role === 'admin')
+            <x-form-select name="user_id" label="Owner" :options="$owner_options" :value="$tender->user_id" />
+        @endif
+
         <x-form-checkboxes name="keywords" label="Keywords" :values="$tender->keywords->pluck('id')->toArray()" :options="$keyword_options" />
 
         <button type="submit">Save changes</button>
