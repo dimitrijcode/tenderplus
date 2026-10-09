@@ -24,6 +24,9 @@
                 @auth
                     <a href="{{ route('dashboard') }}">Dashboard</a>
                     <a href="{{ route('admin.tenders.index') }}">Tender management</a>
+                    @if (auth()->user()->role === 'admin')
+                        <a href="{{ route('admin.keywords.index') }}">Keyword management</a>
+                    @endif
                 @else
                     <a href="{{ route('login') }}">Login</a>
                 @endauth
