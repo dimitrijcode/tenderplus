@@ -76,6 +76,8 @@ class TenderController extends Controller
             'title' => ['required', 'string', 'max:255'],
             'description' => ['required', 'string'],
             'organization_name' => ['required', 'string', 'max:255'],
+            'keywords' => ['nullable', 'array'],
+            'keywords.*' => ['integer', 'exists:keywords,id'],
         ]);
 
         $tender->update([
@@ -89,6 +91,8 @@ class TenderController extends Controller
             'is_public' => $request->boolean('is_public'),
             'status' => $request['status'] ?? 'open',
         ]);
+
+        $tender->keywords()->sync($request->input('keywords', []));
 
         return redirect()->route('admin.tenders.index');
     }
