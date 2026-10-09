@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\KeywordController;
 use App\Http\Controllers\TenderController;
 use App\Http\Controllers\Userzone\DashboardController;
 use App\Http\Controllers\Userzone\ProfileController;
@@ -13,6 +14,9 @@ Route::get('/', [WelcomeController::class, 'index'])->name('home');
 
 Route::get('tenders', [TenderController::class, 'index'])->name('tenders.index');
 Route::get('tenders/{tender}', [TenderController::class, 'show'])->name('tenders.show');
+
+Route::get('keywords', [KeywordController::class, 'index'])->name('keywords.index');
+Route::get('keywords/{keyword}', [KeywordController::class, 'show'])->name('keywords.show');
 
 // Todo: add your public routes here
 
