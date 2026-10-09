@@ -24,10 +24,7 @@
             <input type="text" name="location" placeholder="Location">
         </div>
 
-        <div>
-            <label for="budget">Budget (€)</label><br>
-            <input type="number" step="0.01" name="budget" placeholder="Budget">
-        </div>
+        <x-form-number-input name="budget" label="Budget (€)" placeholder="Budget" step="0.01" />
 
         <div>
             <label for="deadline">Deadline</label><br>
