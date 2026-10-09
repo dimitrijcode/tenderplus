@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Keyword;
 use App\Models\Tender;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class TenderController extends Controller
@@ -25,7 +26,9 @@ class TenderController extends Controller
     {
         $keyword_options = Keyword::orderBy('name')->pluck('name', 'id')->toArray();
 
-        return view('admin.tenders.create', compact('keyword_options'));
+        $owner_options = User::orderBy('name')->pluck('name', 'id')->toArray();
+
+        return view('admin.tenders.create', compact('keyword_options', 'owner_options'));
     }
 
     public function store(Request $request)
@@ -64,7 +67,9 @@ class TenderController extends Controller
 
         $keyword_options = Keyword::orderBy('name')->pluck('name', 'id')->toArray();
 
-        return view('admin.tenders.edit', compact('tender', 'keyword_options'));
+        $owner_options = User::orderBy('name')->pluck('name', 'id')->toArray();
+
+        return view('admin.tenders.edit', compact('tender', 'keyword_options', 'owner_options'));
     }
 
     public function update(Request $request, Tender $tender)
