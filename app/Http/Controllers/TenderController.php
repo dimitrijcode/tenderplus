@@ -15,6 +15,7 @@ class TenderController extends Controller
         $tenders = Tender::public()
             ->when($request->filled('q'), fn ($query) => $query->where('title', 'like', '%'.$request->q.'%'))
             ->when($request->filled('keyword'), fn ($query) => $query->whereHas('keywords', fn ($q) => $q->whereKey($request->keyword)))
+            ->when($request->filled('location'), fn ($query) => $query->where('location', 'like', '%'.$request->location.'%'))
             ->get();
 
         $keyword_options = Keyword::orderBy('name')->pluck('name', 'id')->toArray();

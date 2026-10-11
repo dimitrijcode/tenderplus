@@ -11,6 +11,7 @@
                 <option value="{{ $id }}" @selected(request('keyword') == $id)>{{ $name }}</option>
             @endforeach
         </select>
+        <input type="text" name="location" placeholder="Location" value="{{ request('location') }}">
         <button type="submit">Search</button>
     </form>
 
