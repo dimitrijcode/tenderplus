@@ -30,6 +30,8 @@ class ProfileUpdateRequest extends FormRequest
             'industry' => ['nullable', 'string', 'max:255'],
             'location' => ['nullable', 'string', 'max:255'],
             'website' => ['nullable', 'url', 'max:255'],
+            'keywords' => ['nullable', 'array'],
+            'keywords.*' => ['integer', 'exists:keywords,id'],
         ];
     }
 }
