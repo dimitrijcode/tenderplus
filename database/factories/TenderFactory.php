@@ -31,4 +31,24 @@ class TenderFactory extends Factory
             'user_id' => User::factory(),
         ];
     }
+
+    /**
+     * Indicate that the tender is not shown on the public pages.
+     */
+    public function private(): static
+    {
+        return $this->state(fn (array $attributes) => [
+            'is_public' => false,
+        ]);
+    }
+
+    /**
+     * Indicate that the tender is closed.
+     */
+    public function closed(): static
+    {
+        return $this->state(fn (array $attributes) => [
+            'status' => 'closed',
+        ]);
+    }
 }
