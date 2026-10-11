@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Database\Factories\TenderFactory;
+use Illuminate\Database\Eloquent\Attributes\Scope;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -39,6 +41,12 @@ class Tender extends Model
     public function keywords(): BelongsToMany
     {
         return $this->belongsToMany(Keyword::class);
+    }
+
+    #[Scope]
+    protected function public(Builder $query): void
+    {
+        $query->where('is_public', true);
     }
 
     public function canChange(User $user): bool

@@ -10,7 +10,7 @@ class TenderController extends Controller
     public function index()
     {
         // Load the relevant tenders
-        $tenders = Tender::all();
+        $tenders = Tender::public()->get();
 
         return view('tenders.index', compact('tenders'));
     }
