@@ -5,6 +5,12 @@
 
     <form method="GET" action="{{ route('tenders.index') }}" class="mt-4">
         <input type="search" name="q" placeholder="Search by title" value="{{ request('q') }}">
+        <select name="keyword">
+            <option value="">All keywords</option>
+            @foreach ($keyword_options as $id => $name)
+                <option value="{{ $id }}" @selected(request('keyword') == $id)>{{ $name }}</option>
+            @endforeach
+        </select>
         <button type="submit">Search</button>
     </form>
 
