@@ -49,6 +49,13 @@ class Tender extends Model
         $query->where('is_public', true);
     }
 
+    #[Scope]
+    protected function open(Builder $query): void
+    {
+        $query->where('status', 'open')
+            ->where(fn ($q) => $q->whereNull('deadline')->orWhere('deadline', '>', now()));
+    }
+
     public function canChange(User $user): bool
     {
         if ($user->id === $this->user_id) {
