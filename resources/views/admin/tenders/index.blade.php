@@ -8,7 +8,7 @@
 
     @foreach($tenders as $tender)
         <div>
-            {{ $tender->title }}
+            <a href="{{ route('admin.tenders.show', $tender->id) }}">{{ $tender->title }}</a>
             <a href="{{ route('admin.tenders.edit', $tender->id) }}">edit</a>
             <form action="{{ route('admin.tenders.destroy', $tender->id) }}" method="POST">
                 @method('DELETE')

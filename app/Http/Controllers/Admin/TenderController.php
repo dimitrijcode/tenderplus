@@ -65,6 +65,13 @@ class TenderController extends Controller
         return redirect()->route('admin.tenders.index');
     }
 
+    public function show(Tender $tender)
+    {
+        abort_unless($tender->canChange(auth()->user()), 403);
+
+        return view('admin.tenders.show', compact('tender'));
+    }
+
     public function edit(Tender $tender)
     {
         abort_unless($tender->canChange(auth()->user()), 403);
