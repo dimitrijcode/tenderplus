@@ -12,6 +12,13 @@
             @endforeach
         </select>
         <input type="text" name="location" placeholder="Location" value="{{ request('location') }}">
+        <select name="sort">
+            <option value="">Default order</option>
+            <option value="budget_asc" @selected(request('sort') === 'budget_asc')>Budget: low to high</option>
+            <option value="budget_desc" @selected(request('sort') === 'budget_desc')>Budget: high to low</option>
+            <option value="deadline_asc" @selected(request('sort') === 'deadline_asc')>Deadline: soonest first</option>
+            <option value="deadline_desc" @selected(request('sort') === 'deadline_desc')>Deadline: latest first</option>
+        </select>
         <button type="submit">Search</button>
     </form>
 
