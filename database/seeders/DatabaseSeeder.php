@@ -41,5 +41,15 @@ class DatabaseSeeder extends Seeder
         foreach (User::inRandomOrder()->take(5)->get() as $user) {
             $user->keywords()->attach(Keyword::inRandomOrder()->take(rand(0, 3))->pluck('id'));
         }
+
+        // Fixed fixtures: test@example.com shares a keyword with one tender that
+        // should be recommended, and with a private and a closed one that should not.
+        $fixtureKeyword = Keyword::factory()->create(['name' => 'recommended-demo']);
+
+        User::firstWhere('email', 'test@example.com')->keywords()->syncWithoutDetaching([$fixtureKeyword->id]);
+
+        Tender::factory()->create(['title' => 'Demo: public open tender'])->keywords()->attach($fixtureKeyword);
+        Tender::factory()->private()->create(['title' => 'Demo: private tender'])->keywords()->attach($fixtureKeyword);
+        Tender::factory()->closed()->create(['title' => 'Demo: closed tender'])->keywords()->attach($fixtureKeyword);
     }
 }
