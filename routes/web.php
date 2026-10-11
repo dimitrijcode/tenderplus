@@ -24,6 +24,8 @@ Route::get('keywords/{keyword}', [KeywordController::class, 'show'])->name('keyw
  * Management routes
  */
 Route::middleware(['auth'])->group(function () {
+    Route::get('admin', App\Http\Controllers\Admin\DashboardController::class)->name('admin.dashboard');
+
     // CRUD for tenders
     Route::get('admin/tenders', [App\Http\Controllers\Admin\TenderController::class, 'index'])->name('admin.tenders.index');
     Route::get('admin/tenders/create', [App\Http\Controllers\Admin\TenderController::class, 'create'])->name('admin.tenders.create');
