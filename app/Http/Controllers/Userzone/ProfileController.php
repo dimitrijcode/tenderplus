@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Userzone;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Models\Keyword;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -19,6 +20,7 @@ class ProfileController extends Controller
     {
         return view('userzone.profile.edit', [
             'user' => $request->user(),
+            'keyword_options' => Keyword::orderBy('name')->pluck('name', 'id')->toArray(),
         ]);
     }
 

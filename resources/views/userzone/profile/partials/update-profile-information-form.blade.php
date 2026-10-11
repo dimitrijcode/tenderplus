@@ -55,6 +55,8 @@
             </div>
         @endforeach
 
+        <x-form-checkboxes name="keywords" label="Interested in keywords" :values="$user->keywords->pluck('id')->toArray()" :options="$keyword_options" />
+
         <div class="flex items-center gap-4">
             <x-breeze.primary-button>Save</x-breeze.primary-button>
 
