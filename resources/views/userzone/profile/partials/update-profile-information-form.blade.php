@@ -47,6 +47,14 @@
             @endif
         </div>
 
+        @foreach (['company_name' => 'Company name', 'industry' => 'Industry', 'location' => 'Location', 'website' => 'Website'] as $field => $label)
+            <div>
+                <x-breeze.input-label :for="$field" :value="$label" />
+                <x-breeze.text-input :id="$field" :name="$field" :type="$field === 'website' ? 'url' : 'text'" class="mt-1 block w-full" :value="old($field, $user->$field)" />
+                <x-breeze.input-error class="mt-2" :messages="$errors->get($field)" />
+            </div>
+        @endforeach
+
         <div class="flex items-center gap-4">
             <x-breeze.primary-button>Save</x-breeze.primary-button>
 
