@@ -21,7 +21,7 @@
 
         <div>
             <label for="deadline">Deadline</label><br>
-            <input type="datetime-local" name="deadline" value="{{ $tender->deadline }}">
+            <input type="datetime-local" name="deadline" value="{{ $tender->deadline?->format('Y-m-d\TH:i') }}">
         </div>
 
         <div>
