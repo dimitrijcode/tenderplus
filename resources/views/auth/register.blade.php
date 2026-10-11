@@ -39,6 +39,15 @@
             <x-breeze.input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
         </div>
 
+        <!-- Company details -->
+        @foreach (['company_name' => 'Company name', 'industry' => 'Industry', 'location' => 'Location', 'website' => 'Website'] as $field => $label)
+            <div class="mt-4">
+                <x-breeze.input-label :for="$field" :value="$label" />
+                <x-breeze.text-input :id="$field" class="block mt-1 w-full" :type="$field === 'website' ? 'url' : 'text'" :name="$field" :value="old($field)" />
+                <x-breeze.input-error :messages="$errors->get($field)" class="mt-2" />
+            </div>
+        @endforeach
+
         <div class="flex items-center justify-end mt-4">
             <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
                 Already registered?
