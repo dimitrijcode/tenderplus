@@ -2,6 +2,12 @@
 
     <h1 class="text-2xl font-bold">Tenders overview</h1>
     <p>This is the full content of our tender platform</p>
+
+    <form method="GET" action="{{ route('tenders.index') }}" class="mt-4">
+        <input type="search" name="q" placeholder="Search by title" value="{{ request('q') }}">
+        <button type="submit">Search</button>
+    </form>
+
     <ul class="grid grid-cols-3 mt-8 gap-8">
         @foreach($tenders as $tender)
             <li class="p-1 border-t border-black hover:bg-gray-200">
