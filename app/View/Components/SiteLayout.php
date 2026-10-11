@@ -19,7 +19,6 @@ class SiteLayout extends Component
             ['label' => 'Home', 'link' => route('home')],
             ['label' => 'Tenders', 'link' => route('tenders.index')],
             ['label' => 'Keywords', 'link' => route('keywords.index')],
-            ['label' => 'About', 'link' => '/about'],
         ];
     }
 
