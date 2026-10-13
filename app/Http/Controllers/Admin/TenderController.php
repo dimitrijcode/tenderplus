@@ -37,7 +37,7 @@ class TenderController extends Controller
         $request->validate([
             'title' => ['required', 'string', 'max:255'],
             'description' => ['required', 'string'],
-            'organization_name' => ['required', 'string', 'max:255'],
+            'organization_name' => ['required', 'string', 'min:5', 'max:255'],
             'location' => ['nullable', 'string', 'max:255'],
             'budget' => ['nullable', 'numeric', 'min:0'],
             'deadline' => ['nullable', 'date'],
@@ -97,7 +97,7 @@ class TenderController extends Controller
         $request->validate([
             'title' => ['required', 'string', 'max:255'],
             'description' => ['required', 'string'],
-            'organization_name' => ['required', 'string', 'max:255'],
+            'organization_name' => ['required', 'string', 'min:5', 'max:255'],
             'location' => ['nullable', 'string', 'max:255'],
             'budget' => ['nullable', 'numeric', 'min:0'],
             'deadline' => ['nullable', 'date'],
